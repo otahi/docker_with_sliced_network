@@ -9,6 +9,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box_url = "https://github.com/2creatives/vagrant-centos/releases/download/v6.5.1/centos65-x86_64-20131205.box"
 
   #install chef
-  config.vm.provision "shell", inline: "curl -L http://www.opscode.com/chef/install.sh | sudo bash"
+#  config.vm.provision "shell", inline: "curl -L http://www.opscode.com/chef/install.sh | sudo bash"
+
+  config.vm.provision :chef_solo do |chef|
+    chef.cookbooks_path = ["chef-repo/cookbooks", "chef-repo/site-cookbooks"]
+    chef.add_recipe("openvnet")
+  end
 
 end
