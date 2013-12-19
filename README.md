@@ -1,10 +1,15 @@
-#docker_openvnet#
+#docker_with_sliced_network#
 
-docker with OpenVNet on vagrant
+Docker with sliced networks on vagrant environment.
+
+##Goad##
+
+To provide testing linux containers on sliced networks.
+
 
 ##Requirements##
 - [vagrant](http://www.vagrantup.com/)
 - [docker](https://www.docker.io/)
-- [OpenVNet](http://openvnet.com/)
 - [Chef](http://www.getchef.com/chef/)
 - [serverspec](http://serverspec.org/)
+- [Open vSwitch](http://openvswitch.org/)
