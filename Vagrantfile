@@ -15,9 +15,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = ["chef-repo/cookbooks", "chef-repo/site-cookbooks"]
-    chef.add_recipe("yum")
     chef.add_recipe("common")
     chef.add_recipe("openvswitch")
+    chef.add_recipe("docker")
   end
 
   config.vm.provision :serverspec do |spec|

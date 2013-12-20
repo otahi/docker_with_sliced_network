@@ -2,7 +2,7 @@
 
 Docker with sliced networks on vagrant environment.
 
-##Goad##
+##Goal##
 
 To provide testing linux containers on sliced networks.
 
@@ -16,7 +16,8 @@ To provide testing linux containers on sliced networks.
 - [Open vSwitch](http://openvswitch.org/)
 
 ##TODOs##
-- [ ] install openvswitch
-- [ ] install docker
+- [x] install openvswitch
+- [x] install docker
+- [ ] draw a simple network chart
 - [ ] configure openvswitch to use vlan
 - [ ] ...
