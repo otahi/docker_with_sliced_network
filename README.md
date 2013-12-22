@@ -6,6 +6,8 @@ Docker with sliced networks on vagrant environment.
 
 To provide testing linux containers on sliced networks.
 
+![simple network chart](images/lxc_ovs_vm_host.png "network chart")
+
 ##Requirements##
 - [vagrant](http://www.vagrantup.com/)
     - vagrant-serverspec
