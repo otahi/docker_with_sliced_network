@@ -18,6 +18,6 @@ To provide testing linux containers on sliced networks.
 ##TODOs##
 - [x] install openvswitch
 - [x] install docker
-- [ ] draw a simple network chart
+- [x] draw a simple network chart
 - [ ] configure openvswitch to use vlan
 - [ ] ...
