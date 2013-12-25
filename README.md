@@ -23,3 +23,8 @@ To provide testing linux containers on sliced networks.
 - [x] draw a simple network chart
 - [ ] configure openvswitch to use vlan
 - [ ] ...
+
+##References##
+
+- [n40lab: CentOS 6.4 – Openvswitch installation](http://n40lab.wordpress.com/2013/06/03/centos-6-4-openvswitch-installation/)
+- [PaaS: Coupling Docker and Open vSwitch](http://fbevmware.blogspot.jp/2013/12/coupling-docker-and-open-vswitch.html)
