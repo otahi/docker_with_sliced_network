@@ -18,6 +18,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe("common")
     chef.add_recipe("openvswitch")
     chef.add_recipe("docker")
+    chef.add_recipe("trema_sliceable_switch")
   end
 
   config.vm.provision :serverspec do |spec|
