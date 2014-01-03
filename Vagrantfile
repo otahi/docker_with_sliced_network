@@ -14,10 +14,28 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.omnibus.chef_version = :latest
 
   config.vm.provision :chef_solo do |chef|
+    chef.json = {
+      rbenv: {
+        user_installs: [{
+                          user: "vagrant",
+                          rubies: ["2.0.0-p353"],
+                          global: "2.0.0-p353",
+                          gems: {
+                            "2.0.0-p353" => [
+                                             {name: "bundler"}
+                                            ]
+                          }
+                        }]
+      }
+    }
+
     chef.cookbooks_path = ["chef-repo/cookbooks", "chef-repo/site-cookbooks"]
     chef.add_recipe("common")
     chef.add_recipe("openvswitch")
     chef.add_recipe("docker")
+    chef.add_recipe("git")
+    chef.add_recipe("ruby_build")
+    chef.add_recipe("rbenv::user")
     chef.add_recipe("trema_sliceable_switch")
   end
 
