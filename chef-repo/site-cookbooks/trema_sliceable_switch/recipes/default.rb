@@ -7,9 +7,15 @@
 # All rights reserved
 #
 
-trema_apps_dir = "/vagrant/trema/apps"
+trema_dir = "/vagrant/trema"
+trema_apps_dir = "#{trema_dir}/apps"
 
-["sqlite", "perl-DBD-SQLite"].each do |pkg|
+directory trema_apps_dir do
+  action :create
+  recursive true
+end
+
+["gcc", "make", "glib2", "glib2-devel", "ruby-devel", "libpcap-devel", "sqlite", "perl-DBD-SQLite"].each do |pkg|
   package pkg do
     action :install
   end
@@ -19,7 +25,7 @@ gem_package "trema" do
   action :install
 end
 
-git "#{trema_apps_dir}" do
+git trema_apps_dir do
   repository "https://github.com/trema/apps.git"
   reference "master"
   action :sync
