@@ -14,8 +14,8 @@ describe package('trema') do
   it { should be_installed.by('gem') }
 end
 
-#TODO test installed object for trema-apos
-# topology / flow_mangager / slicealbe_switch
-#describe file("#{trema_apps_dir}/") do
-#  it { should be_executable}
-#end
+%w(topology flow_mangager slicealbe_switch).each do |app|
+  describe file("#{trema_apps_dir}/#{app}/#{app}") do
+    it { should be_executable}
+  end
+end

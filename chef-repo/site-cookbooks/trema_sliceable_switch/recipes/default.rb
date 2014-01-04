@@ -15,7 +15,7 @@ directory trema_apps_dir do
   recursive true
 end
 
-["gcc", "make", "glib2", "glib2-devel", "ruby-devel", "libpcap-devel", "sqlite", "perl-DBD-SQLite"].each do |pkg|
+%w(gcc make glib2 glib2-devel ruby-devel libpcap-devel sqlite perl-DBD-SQLite).each do |pkg|
   package pkg do
     action :install
   end
