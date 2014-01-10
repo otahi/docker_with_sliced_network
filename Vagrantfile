@@ -25,7 +25,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                                              {name: "bundler"}
                                             ]
                           }
-                        }]
+                        }],
+        rubies: ["2.0.0-p353"],
+        global: "2.0.0-p353",
+        gems: {
+          "2.0.0-p353" => [
+                           {name: "bundler"}
+                          ]
+        }
+
       }
     }
 
@@ -35,6 +43,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe("docker")
     chef.add_recipe("git")
     chef.add_recipe("ruby_build")
+    chef.add_recipe("rbenv::system")
     chef.add_recipe("rbenv::user")
     chef.add_recipe("trema_sliceable_switch")
   end

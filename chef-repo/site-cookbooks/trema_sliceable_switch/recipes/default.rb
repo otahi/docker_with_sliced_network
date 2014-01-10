@@ -7,7 +7,7 @@
 # All rights reserved
 #
 
-trema_dir = "/vagrant/trema"
+trema_dir = "/opt/trema"
 trema_apps_dir = "#{trema_dir}/apps"
 
 directory trema_apps_dir do
@@ -15,7 +15,7 @@ directory trema_apps_dir do
   recursive true
 end
 
-%w(gcc make glib2 glib2-devel ruby-devel libpcap-devel sqlite perl-DBD-SQLite).each do |pkg|
+%w(gcc make glib2 glib2-devel ruby-devel libpcap-devel sqlite perl-DBD-SQLite perl-Time-HiRes).each do |pkg|
   package pkg do
     action :install
   end
@@ -23,6 +23,7 @@ end
 
 gem_package "trema" do
   action :install
+  options("--force")
 end
 
 git trema_apps_dir do
@@ -49,5 +50,6 @@ bash "apps/sliceable_switch" do
   cwd "#{trema_apps_dir}/sliceable_switch"
   code <<-EOH
     make
+    ./create_tables.sh
   EOH
 end
