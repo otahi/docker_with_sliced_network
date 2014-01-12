@@ -53,3 +53,24 @@ bash "apps/sliceable_switch" do
     ./create_tables.sh
   EOH
 end
+
+template "#{trema_apps_dir}/sliceable_switch.conf" do mode 00644
+  source "sliceable_switch.conf.erb"
+end
+
+bash "start sliceable_switch_controller" do
+  cwd "#{trema_apps_dir}"
+  code <<-EOH
+    trema killall
+    trema run -c #{trema_apps_dir}/sliceable_switch.conf &
+  EOH
+end
+
+bash "connect_openflow_switch_to_openflow_controller" do
+  cwd "#{trema_apps_dir}"
+  code <<-EOH
+    ovs-vsctl add-br ofs0
+    ovs-vsctl set-controller ofs0 tcp:#{node['ofc']['port']}
+    ovs-vsctl set bridge ofs0 other-config:datapath-id=#{node['ofs']['datapath_id']}
+  EOH
+end

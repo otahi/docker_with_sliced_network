@@ -1,0 +1,22 @@
+trema_apps_dir = "/opt/trema/apps"
+
+run {
+  path "#{trema_apps_dir}/topology/topology"
+}
+
+run {
+  path "#{trema_apps_dir}/topology/topology_discovery"
+}
+
+run {
+  path "#{trema_apps_dir}/flow_manager/flow_manager"
+}
+
+run {
+  path "#{trema_apps_dir}/sliceable_switch/sliceable_switch"
+  options "-s", "#{trema_apps_dir}/sliceable_switch/slice.db",
+          "-a", "#{trema_apps_dir}/sliceable_switch/filter.db"
+}
+
+event :port_status => "topology", :packet_in => "filter", :state_notify => "topology"
+filter :lldp => "topology_discovery", :packet_in => "sliceable_switch"

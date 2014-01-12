@@ -11,6 +11,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "centos65-base"
   config.vm.box_url = "https://github.com/2creatives/vagrant-centos/releases/download/v6.5.1/centos65-x86_64-20131205.box"
 
+  config.vm.network :private_network, ip: "192.168.128.2", virtualbox__intnet: "true", adapter: 2
+
   config.omnibus.chef_version = :latest
 
   config.vm.provision :chef_solo do |chef|
@@ -34,6 +36,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                           ]
         }
 
+      },
+      ofc: {
+        port: "192.168.128.2:6653"
+      },
+      ofs: {
+        datapath_id: "0000000000000001"
       }
     }
 
